@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tests" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="HealthyFish" />
+    <working_directory value="$PROJECT_DIR$" />
+    <go_parameters value="-i" />
+    <kind value="DIRECTORY" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/../HealthyFish|$PROJECT_DIR$/services/order_test.go" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>
