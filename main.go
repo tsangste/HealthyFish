@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/tsangste/HealthyFish/controllers"
 	"net/http"
 )
 
@@ -12,5 +14,10 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
 	})
 
-	r.Run()
+	r.GET("/items/calculate/:id", controllers.CalculateItems)
+
+	err := r.Run()
+	if err != nil {
+		fmt.Println(err)
+	}
 }
