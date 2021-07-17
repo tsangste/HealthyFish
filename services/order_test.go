@@ -41,7 +41,7 @@ func TestOrder_251(t *testing.T) {
 		t.Errorf("There should only be 1 item")
 	}
 
-	if order[0] != 250 {
+	if order[0] != 500 {
 		t.Errorf("Item order quantity should be 500")
 	}
 }
@@ -70,15 +70,15 @@ func TestOrder_12001(t *testing.T) {
 	}
 
 	if order[0] != 5000 {
-		t.Errorf("First Item order quantity should be 500")
+		t.Errorf("First Item order quantity should be 5000")
 	}
 
 	if order[1] != 5000 {
-		t.Errorf("Second Item order quantity should be 250")
+		t.Errorf("Second Item order quantity should be 5000")
 	}
 
 	if order[2] != 2000 {
-		t.Errorf("Second Item order quantity should be 250")
+		t.Errorf("Second Item order quantity should be 2000")
 	}
 
 	if order[3] != 250 {

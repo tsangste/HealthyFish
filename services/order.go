@@ -10,13 +10,18 @@ func Calculate(items []int, quantity int) []int {
 	sort.Sort(sort.Reverse(sort.IntSlice(items)))
 
 	var result []int
+	previous := items[0]
 	for index, item := range items {
 		if quantity == 0 {
 			break
 		}
 
 		remainder := quantity % item
-		if remainder != quantity {
+
+		if previous > quantity && quantity > item && lastValue(length, index) {
+			result = append(result, previous)
+		} else if remainder != quantity {
+			fmt.Printf("remainder=%d, quantity=%d, item=%d\n", remainder, quantity, item)
 			value := (quantity - remainder) / item
 
 			for i := 0; i < value; i++ {
@@ -24,13 +29,13 @@ func Calculate(items []int, quantity int) []int {
 			}
 
 			quantity = remainder
-			continue
-		}
-
-		if quantity < item && lastValue(length, index) {
+		} else if quantity < item && lastValue(length, index) {
+			fmt.Printf("item=%d\n", item)
 			result = append(result, item)
 			quantity = 0
 		}
+
+		previous = item
 	}
 
 	fmt.Printf("%v\n", result)
