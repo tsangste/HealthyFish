@@ -2,8 +2,16 @@ package services
 
 import "testing"
 
+var items []int
+
+func init() {
+	if items == nil {
+		items = []int{250, 500, 1000, 2000, 5000}
+	}
+}
+
 func TestOrder_1(t *testing.T) {
-	order := Calculate(1)
+	order := Calculate(items, 1)
 
 	if len(order) != 1 {
 		t.Errorf("There should only be 1 item")
@@ -15,7 +23,7 @@ func TestOrder_1(t *testing.T) {
 }
 
 func TestOrder_250(t *testing.T) {
-	order := Calculate(250)
+	order := Calculate(items, 250)
 
 	if len(order) != 1 {
 		t.Errorf("There should only be 1 item")
@@ -27,7 +35,7 @@ func TestOrder_250(t *testing.T) {
 }
 
 func TestOrder_251(t *testing.T) {
-	order := Calculate(251)
+	order := Calculate(items, 251)
 
 	if len(order) != 1 {
 		t.Errorf("There should only be 1 item")
@@ -39,7 +47,7 @@ func TestOrder_251(t *testing.T) {
 }
 
 func TestOrder_501(t *testing.T) {
-	order := Calculate(501)
+	order := Calculate(items, 501)
 
 	if len(order) != 2 {
 		t.Errorf("There should be 2 items")
@@ -55,7 +63,7 @@ func TestOrder_501(t *testing.T) {
 }
 
 func TestOrder_12001(t *testing.T) {
-	order := Calculate(12001)
+	order := Calculate(items, 12001)
 
 	if len(order) != 4 {
 		t.Errorf("There should be 2 items")

@@ -5,8 +5,7 @@ import (
 	"sort"
 )
 
-func Calculate(quantity int) []int {
-	items := []int{250, 500, 1000, 2000, 5000}
+func Calculate(items []int, quantity int) []int {
 	length := len(items)
 	sort.Sort(sort.Reverse(sort.IntSlice(items)))
 

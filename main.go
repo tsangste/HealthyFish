@@ -14,7 +14,10 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
 	})
 
-	r.GET("/items/calculate/:id", controllers.CalculateItems)
+	r.GET("/items", controllers.GetAll)
+	r.GET("/items/calculate/:amount", controllers.CalculateItems)
+	r.POST("/items/:item", controllers.AddItem)
+	r.DELETE("/items/:item", controllers.DeleteItem)
 
 	err := r.Run()
 	if err != nil {
