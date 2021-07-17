@@ -1,0 +1,80 @@
+basePath: /
+host: localhost:8080
+info:
+  contact:
+    email: tsangste@gmail.com
+    name: Steven Tsang
+    url: http://github.com/tsangste/HealthyFish
+  description: HealthyFish item server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: HealthyFish API
+  version: "1.0"
+paths:
+  /items:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+      summary: Retrieves all item sizes
+  /items/{item}:
+    delete:
+      parameters:
+      - description: item size
+        in: path
+        name: item
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+      summary: Deletes item size
+    post:
+      parameters:
+      - description: item size
+        in: path
+        name: item
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+      summary: Adds item size
+  /items/calculate/{amount}:
+    get:
+      parameters:
+      - description: amount required
+        in: path
+        name: amount
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+      summary: Get all the item sizes to fulfil size
+swagger: "2.0"

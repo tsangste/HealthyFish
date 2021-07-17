@@ -9,12 +9,43 @@ import (
 	"strconv"
 )
 
+// GetAll godoc
+// @Summary Retrieves all item sizes
+// @Produce json
+// @Success 200 {object} int
+// @Router /items [get]
 func GetAll(c *gin.Context) {
 	items := models.GetAll()
 
 	c.JSON(http.StatusOK, gin.H{"data": items})
 }
 
+// CalculateItems godoc
+// @Summary Get all the item sizes to fulfil size
+// @Produce json
+// @Param amount path int true "amount required"
+// @Success 200 {object} int
+// @Router /items/calculate/{amount} [get]
+func CalculateItems(c *gin.Context) {
+	amount := c.Param("amount")
+
+	i, err := strconv.Atoi(amount)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	items := models.GetAll()
+	orders := services.Calculate(items, i)
+
+	c.JSON(http.StatusOK, gin.H{"data": orders})
+}
+
+// AddItem godoc
+// @Summary Adds item size
+// @Produce json
+// @Param item path int true "item size"
+// @Success 200 {object} int
+// @Router /items/{item} [post]
 func AddItem(c *gin.Context) {
 	item := c.Param("item")
 
@@ -29,6 +60,12 @@ func AddItem(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": items})
 }
 
+// DeleteItem godoc
+// @Summary Deletes item size
+// @Produce json
+// @Param item path int true "item size"
+// @Success 200 {object} int
+// @Router /items/{item} [delete]
 func DeleteItem(c *gin.Context) {
 	item := c.Param("item")
 
@@ -41,18 +78,4 @@ func DeleteItem(c *gin.Context) {
 	items := models.GetAll()
 
 	c.JSON(http.StatusOK, gin.H{"data": items})
-}
-
-func CalculateItems(c *gin.Context) {
-	amount := c.Param("amount")
-
-	i, err := strconv.Atoi(amount)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	items := models.GetAll()
-	orders := services.Calculate(items, i)
-
-	c.JSON(http.StatusOK, gin.H{"data": orders})
 }

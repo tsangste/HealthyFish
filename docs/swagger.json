@@ -1,0 +1,122 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "HealthyFish item server.",
+        "title": "HealthyFish API",
+        "contact": {
+            "name": "Steven Tsang",
+            "url": "http://github.com/tsangste/HealthyFish",
+            "email": "tsangste@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/items": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Retrieves all item sizes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/items/calculate/{amount}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get all the item sizes to fulfil size",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "amount required",
+                        "name": "amount",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/items/{item}": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Adds item size",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "item size",
+                        "name": "item",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Deletes item size",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "item size",
+                        "name": "item",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
