@@ -12,7 +12,7 @@ import (
 // GetAll godoc
 // @Summary Retrieves all item sizes
 // @Produce json
-// @Success 200 {object} int
+// @success 200 {object} models.JSONResult{data=[]int}
 // @Router /items [get]
 func GetAll(c *gin.Context) {
 	items := models.GetAll()
@@ -24,7 +24,7 @@ func GetAll(c *gin.Context) {
 // @Summary Get all the item sizes to fulfil size
 // @Produce json
 // @Param amount path int true "amount required"
-// @Success 200 {object} int
+// @success 200 {object} models.JSONResult{data=[]int}
 // @Router /items/calculate/{amount} [get]
 func CalculateItems(c *gin.Context) {
 	amount := c.Param("amount")
@@ -44,7 +44,7 @@ func CalculateItems(c *gin.Context) {
 // @Summary Adds item size
 // @Produce json
 // @Param item path int true "item size"
-// @Success 200 {object} int
+// @success 200 {object} models.JSONResult{data=[]int}
 // @Router /items/{item} [post]
 func AddItem(c *gin.Context) {
 	item := c.Param("item")
@@ -64,7 +64,7 @@ func AddItem(c *gin.Context) {
 // @Summary Deletes item size
 // @Produce json
 // @Param item path int true "item size"
-// @Success 200 {object} int
+// @success 200 {object} models.JSONResult{data=[]int}
 // @Router /items/{item} [delete]
 func DeleteItem(c *gin.Context) {
 	item := c.Param("item")

@@ -1,4 +1,10 @@
 basePath: /
+definitions:
+  models.JSONResult:
+    properties:
+      data:
+        type: object
+    type: object
 host: localhost:8080
 info:
   contact:
@@ -20,9 +26,14 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              type: integer
-            type: array
+            allOf:
+            - $ref: '#/definitions/models.JSONResult'
+            - properties:
+                data:
+                  items:
+                    type: integer
+                  type: array
+              type: object
       summary: Retrieves all item sizes
   /items/{item}:
     delete:
@@ -38,9 +49,14 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              type: integer
-            type: array
+            allOf:
+            - $ref: '#/definitions/models.JSONResult'
+            - properties:
+                data:
+                  items:
+                    type: integer
+                  type: array
+              type: object
       summary: Deletes item size
     post:
       parameters:
@@ -55,9 +71,14 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              type: integer
-            type: array
+            allOf:
+            - $ref: '#/definitions/models.JSONResult'
+            - properties:
+                data:
+                  items:
+                    type: integer
+                  type: array
+              type: object
       summary: Adds item size
   /items/calculate/{amount}:
     get:
@@ -73,8 +94,13 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              type: integer
-            type: array
+            allOf:
+            - $ref: '#/definitions/models.JSONResult'
+            - properties:
+                data:
+                  items:
+                    type: integer
+                  type: array
+              type: object
       summary: Get all the item sizes to fulfil size
 swagger: "2.0"
